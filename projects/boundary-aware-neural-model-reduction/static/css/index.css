@@ -375,10 +375,9 @@ pre {
 
   .publication-links,
   .highlight-grid,
-  .four-up,
-  .two-up,
-  .media-pair,
-  .figure-pair {
+  .figure-pair,
+  .thermal-pair,
+  .two-up {
     grid-template-columns: 1fr;
   }
 
