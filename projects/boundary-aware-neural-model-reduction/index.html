@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Boundary-aware Neural Model Reduction for PDEs extends neural eigenanalysis to boundary-parameterized reduced-order physical simulation.">
+  <meta name="keywords" content="SIGGRAPH 2026, reduced-order modeling, neural eigenanalysis, boundary conditions, PDEs, physical simulation">
+  <meta name="author" content="Li Liao, Pengfei Shen, Yifan Peng">
+  <title>Boundary-aware Neural Model Reduction for PDEs</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" type="image/png" href="./static/media/images/label.png">
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+</head>
+<body>
+<main>
+  <section class="hero publication-hero">
+    <div class="hero-body">
+      <div class="container is-max-widescreen has-text-centered title-container">
+        <p class="venue-label">SIGGRAPH 2026 Technical Papers</p>
+        <h1 class="title is-1 publication-title">Boundary-aware Neural Model Reduction for PDEs</h1>
+
+        <div class="is-size-5 publication-authors">
+          <span class="author-block">
+            <a href="https://liliao20.github.io/">Li Liao</a><sup>1,*</sup>
+          </span>
+          <span class="author-block">
+            <a href="https://jerry-shen0527.github.io/">Pengfei Shen</a><sup>1,*</sup>
+          </span>
+          <span class="author-block">
+            <a href="https://www.eee.hku.hk/~evanpeng/">Yifan Peng</a><sup>1,&dagger;</sup>
+          </span>
+        </div>
+
+        <div class="is-size-5 publication-authors affiliation">
+          <span class="author-block"><sup>1</sup>The University of Hong Kong</span>
+        </div>
+        <p class="author-note">* Equal contribution. &dagger; Corresponding author.</p>
+
+        <div class="publication-links">
+          <span class="link-block">
+            <a href="./static/pdf/paper.pdf" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <span class="link-block">
+            <button class="button is-normal is-rounded is-dark" disabled title="The source code is not available yet.">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code Coming Soon</span>
+            </button>
+          </span>
+          <span class="link-block">
+            <a href="https://doi.org/10.1145/3799902.3811153" class="external-link button is-normal is-rounded is-light">
+              <span class="icon"><i class="fas fa-link"></i></span>
+              <span>DOI</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section teaser-section">
+    <div class="container is-max-widescreen">
+      <figure class="media-frame hero-media">
+        <video autoplay muted loop playsinline controls poster="./static/media/images/teaser.png">
+          <source src="./static/media/videos/teaser.mp4" type="video/mp4">
+        </video>
+      </figure>
+      <p class="subtitle has-text-centered teaser-caption">
+        A single neural model learns reduced bases over changing shapes and boundary conditions.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Eigenanalysis of partial differential operators is central to reduced-order physical simulation, but neural shape-space eigenanalysis has largely been limited to natural Neumann boundary conditions. This prevents direct control over supports, openings, heat-exchange boundaries, and other boundary effects that change the underlying operator.
+            </p>
+            <p>
+              We extend neural eigenanalysis for Laplace-type operators to Dirichlet, Robin, and mixed boundary conditions. Boundary placement and Robin coefficients are treated as model inputs, giving a joint shape-boundary space where eigenfunctions and spectra vary continuously with both geometry and boundary configuration.
+            </p>
+            <p>
+              The resulting boundary-aware bases support resonance tuning, reduced-order elastic simulation with changing supports, and transient heat analysis under controllable boundary exchange.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section highlight-section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Highlights</h2>
+      <div class="highlight-grid">
+        <div class="highlight-card">
+          <h3 class="title is-5">Mixed boundary conditions</h3>
+          <p>Neumann, Dirichlet, and Robin boundaries share one variational neural eigenanalysis framework.</p>
+        </div>
+        <div class="highlight-card">
+          <h3 class="title is-5">Bases respect constraints</h3>
+          <p>The reduced space is constructed to satisfy Dirichlet constraints instead of fighting them with penalties.</p>
+        </div>
+        <div class="highlight-card">
+          <h3 class="title is-5">Designable boundary space</h3>
+          <p>Boundary parameters act as inputs that can be searched, optimized, and reused across physical examples.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="section-heading">
+        <p class="eyebrow">Method</p>
+        <h2 class="title is-3">Boundary-Aware Neural Eigenanalysis</h2>
+      </div>
+      <div class="method-stack">
+        <figure class="paper-figure padded-figure">
+          <img src="./static/media/figures/pipeline.jpg" alt="Pipeline">
+          <figcaption>
+            <strong>Pipeline.</strong> Distance-aware lifting enforces Dirichlet constraints, while Neumann and Robin terms enter through variational energies.
+          </figcaption>
+        </figure>
+
+        <figure class="paper-figure padded-figure discontinuity-figure">
+          <img src="./static/media/figures/distance-gradient-discontinuity.jpg" alt="Distance-gradient discontinuity">
+          <figcaption>
+            <strong>Distance-gradient discontinuity.</strong> The distance field is continuous, but its gradient contains switching curves that the lifted input exposes to the network.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="container is-max-widescreen">
+      <div class="section-heading">
+        <p class="eyebrow">Boundary-Space Control</p>
+        <h2 class="title is-3">Cavity Resonance Matching</h2>
+      </div>
+      <div class="figure-pair equal-figures">
+        <figure class="paper-figure">
+          <img src="./static/media/figures/cavity-resonance-matching.jpg" alt="Boundary-space cavity resonance matching">
+          <figcaption>
+            <strong>Boundary-space cavity resonance.</strong> Optimizing a sliding pressure-release opening moves the spectrum toward the target.
+          </figcaption>
+        </figure>
+        <figure class="paper-figure">
+          <img src="./static/media/figures/boundary-space-spectral-tuning.jpg" alt="Boundary-space spectral tuning">
+          <figcaption>
+            <strong>Boundary-space spectral tuning.</strong> A moving Dirichlet patch induces smooth but significant low-frequency spectral variation.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="section-heading">
+        <p class="eyebrow">Dirichlet Bases</p>
+        <h2 class="title is-3">Constraint-Aware Reduced Spaces</h2>
+      </div>
+
+      <figure class="paper-figure padded-figure wide-strip">
+        <img src="./static/media/figures/dirichlet-basis.jpg" alt="Dirichlet boundary-aware basis functions">
+        <figcaption>
+          <strong>Dirichlet boundary-aware basis functions.</strong> The basis functions smoothly vanish at the constrained boundary, so reduced simulation remains inside the admissible subspace.
+        </figcaption>
+      </figure>
+
+      <div class="video-grid four-up light-grid">
+        <figure class="result-panel">
+          <video autoplay muted loop playsinline controls>
+            <source src="./static/media/videos/basis-ground-truth.mp4" type="video/mp4">
+          </video>
+          <figcaption>Ground Truth</figcaption>
+        </figure>
+        <figure class="result-panel">
+          <video autoplay muted loop playsinline controls>
+            <source src="./static/media/videos/basis-ours-12.mp4" type="video/mp4">
+          </video>
+          <figcaption>Ours, 12 Basis</figcaption>
+        </figure>
+        <figure class="result-panel">
+          <video autoplay muted loop playsinline controls>
+            <source src="./static/media/videos/basis-soft-neumann.mp4" type="video/mp4">
+          </video>
+          <figcaption>Soft Barrier, Neumann Basis</figcaption>
+        </figure>
+        <figure class="result-panel">
+          <video autoplay muted loop playsinline controls>
+            <source src="./static/media/videos/basis-stiff-neumann.mp4" type="video/mp4">
+          </video>
+          <figcaption>Stiff Barrier, Neumann Basis</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft-section">
+    <div class="container is-max-widescreen">
+      <div class="section-heading">
+        <p class="eyebrow">Elastic Boundary Space</p>
+        <h2 class="title is-3">Dirichlet Boundary-Space Elastic Simulation</h2>
+      </div>
+      <div class="video-grid two-up">
+        <figure class="result-panel">
+          <video autoplay muted loop playsinline controls>
+            <source src="./static/media/videos/elastic-boundary-space-1.mp4" type="video/mp4">
+          </video>
+          <figcaption>Elastic simulation across one Dirichlet boundary-space trajectory.</figcaption>
+        </figure>
+        <figure class="result-panel">
+          <video autoplay muted loop playsinline controls>
+            <source src="./static/media/videos/elastic-boundary-space-2.mp4" type="video/mp4">
+          </video>
+          <figcaption>Elastic simulation across another Dirichlet boundary-space trajectory.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="section-heading">
+        <p class="eyebrow">Thermal Shape-Boundary Space</p>
+        <h2 class="title is-3">Heatsink Unit Basis</h2>
+      </div>
+      <div class="media-pair thermal-pair">
+        <figure class="paper-figure thermal-image">
+          <img src="./static/media/figures/heatsink-shape-boundary.png" alt="Heatsink shape-boundary space">
+          <figcaption>
+            <strong>Heatsink shape-boundary space.</strong> The Robin coefficient controls convective exchange in a mixed-boundary heat-transfer model.
+          </figcaption>
+        </figure>
+        <figure class="result-panel light-panel">
+          <video autoplay muted loop playsinline controls>
+            <source src="./static/media/videos/heatsink-unit-basis.mp4" type="video/mp4">
+          </video>
+          <figcaption>Heatsink unit-cell eigenbasis under mixed Dirichlet, Neumann, and Robin boundaries.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>@inproceedings{liao2026boundaryaware,
+  author    = {Liao, Li and Shen, Pengfei and Peng, Yifan},
+  title     = {Boundary-aware Neural Model Reduction for PDEs},
+  booktitle = {SIGGRAPH 2026 Technical Papers},
+  year      = {2026},
+  pages     = {12},
+  location  = {Los Angeles, CA, USA},
+  publisher = {ACM},
+  doi       = {10.1145/3799902.3811153}
+}</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <p>
+        Boundary-aware Neural Model Reduction for PDEs. SIGGRAPH Technical Papers, Los Angeles, CA, USA, July 19-23, 2026.
+      </p>
+      <p>
+        Built from the <a href="https://nerfies.github.io/">Nerfies</a> project page template.
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
