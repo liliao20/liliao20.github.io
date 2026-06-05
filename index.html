@@ -9,18 +9,16 @@
 <body>
   <main>
     <header class="profile">
-      <img src="assets/profile.png" alt="Profile photo">
+      <img src="assets/profile.jpg" alt="Profile photo">
       <div>
         <h1>Li Liao</h1>
         <p class="subtitle">Ph.D. Student</p>
-        <!-- <p> -->
-          The University of Hong Kong<br>
-          Email: liliao24@connect.hku.hk
-        </p>
         <p>
-          <!-- <a href="files/cv.pdf">CV</a> / -->
+          The University of Hong Kong<br>
+          Email: <span class="email-obfuscated">liliao24 [at] connect [dot] hku [dot] hk</span>
+        </p>
+        <p class="links">
           <a href="https://scholar.google.com/citations?user=QKQHlYHYQsEC&hl=en">Google Scholar</a> /
-          <!-- <a href="https://github.com/USERNAME">GitHub</a> / -->
           <a href="https://www.linkedin.com/in/li-liao-/">LinkedIn</a>
         </p>
       </div>
@@ -29,38 +27,95 @@
     <section>
       <h2>About</h2>
       <p>
-        I am a PhD student at HKU in the Department of Electrical and Computer Engineering (ECE), 
-        advised by Prof. Evan Y. Peng in the Computational Imaging & Mixed Representation Lab (WeLight@HKU).
+        I am a Ph.D. student (2024-present) in the Department of Electrical and Computer Engineering (ECE) at HKU,
+        advised by <a href="https://www.eee.hku.hk/~evanpeng/">Prof. Evan Y. Peng</a>
+        at the <a href="https://hku.welight.fun/">WeLight</a> Lab.
+        I received my B.S. in Mathematics and Physics and B.Eng. from Tsinghua University in 2024.
       </p>
     </section>
 
-    <!-- <section>
-      <h2>Research Interests</h2>
-      <ul>
-        <li>Physics-based simulation</li>
-      </ul>
-    </section> -->
-
-    <!-- <section>
+    <section>
       <h2>Publications</h2>
 
       <div class="paper">
-        <h3>Title of the Paper</h3>
-        <p>
-          <strong>Li Liao</strong>, Coauthors<br>
-          Conference Name, Year
-        </p>
-        <p>
-          <a href="#">Paper</a> / 
-          <a href="#">Project Page</a> /
-          <a href="#">Code</a>
-        </p>
+        <a class="paper-thumb" href="projects/boundary-aware-neural-model-reduction/">
+          <img src="assets/publications/boundary-aware.jpg" alt="Boundary-aware Neural Model Reduction for PDEs thumbnail">
+        </a>
+        <div class="paper-info">
+          <h3>Boundary-aware Neural Model Reduction for PDEs</h3>
+          <p class="authors"><strong>Li Liao*</strong>, Pengfei Shen*, Yifan Peng</p>
+          <p class="venue">SIGGRAPH 2026 (Technical Papers, to appear in July 2026)</p>
+          <p class="paper-links">
+            <a href="projects/boundary-aware-neural-model-reduction/">Project Page</a>
+            <a href="projects/boundary-aware-neural-model-reduction/static/pdf/paper.pdf">Paper</a>
+            <a href="https://doi.org/10.1145/3799902.3811153">DOI</a>
+          </p>
+        </div>
       </div>
-    </section> -->
+
+      <div class="paper">
+        <div class="paper-thumb placeholder" aria-hidden="true"></div>
+        <div class="paper-info">
+          <h3>Revisiting Hologram Generation, Compression, and Display with AI-Empowered Computational Techniques</h3>
+          <p class="authors"><strong>Li Liao*</strong>, Wenbin Zhou*, Xiangyu Meng, Hyunmin Ban, Yifan Peng</p>
+          <p class="venue">SID Symposium Digest of Technical Papers, 2026</p>
+          <p class="paper-links">
+            <a class="disabled-link" href="#" aria-disabled="true" tabindex="-1">Website</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <a class="paper-thumb" href="https://dl.acm.org/doi/pdf/10.1145/3757377.3763928">
+          <img src="assets/publications/s3-imagery.jpg" alt="S3 Imagery thumbnail">
+        </a>
+        <div class="paper-info">
+          <h3>S<sup>3</sup> Imagery: Specular Shading from Scratch-Anisotropy</h3>
+          <p class="authors">Pengfei Shen, Feifan Qu, <strong>Li Liao</strong>, Ruizhen Hu, Yifan Peng</p>
+          <p class="venue">SIGGRAPH Asia 2025 (Technical Papers)</p>
+          <p class="paper-links">
+            <a href="https://dl.acm.org/doi/pdf/10.1145/3757377.3763928">PDF</a>
+            <a href="https://doi.org/10.1145/3757377.3763928">DOI</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <a class="paper-thumb" href="https://dl.acm.org/doi/pdf/10.1145/3761667.3761957">
+          <img src="assets/publications/xr-2025.jpg" alt="Hands-on Light Field Display thumbnail">
+        </a>
+        <div class="paper-info">
+          <h3>&ldquo;Hands-on&rdquo; Light Field Display via Engineering Scalable Optics, Algorithms, and Mounts</h3>
+          <p class="authors">Feifan Qu, Pengfei Shen, <strong>Li Liao</strong>, Yifan Peng</p>
+          <p class="venue">SIGGRAPH Asia 2025 (XR)</p>
+          <p class="paper-links">
+            <a href="https://dl.acm.org/doi/pdf/10.1145/3761667.3761957">PDF</a>
+            <a href="https://doi.org/10.1145/3761667.3761957">DOI</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <a class="paper-thumb" href="https://sa2025.conference-schedule.org/presentation/?id=emt_144&amp;sess=sess226">
+          <img src="assets/publications/head-up-ar.png" alt="Empowering Head-up AR thumbnail">
+        </a>
+        <div class="paper-info">
+          <h3>Empowering Head-up AR: Leveraging Holographic Display Engine, Geometry Optical Combiner, and Learned Calibration</h3>
+          <p class="authors">Wenbin Zhou, Xiangyu Meng, <strong>Li Liao</strong>, Yifan Peng</p>
+          <p class="venue">SIGGRAPH Asia 2025 (Emerging Technologies)</p>
+          <p class="paper-links">
+            <a href="https://dl.acm.org/doi/pdf/10.1145/3757373.3763776">PDF</a>
+            <a href="https://doi.org/10.1145/3757373.3763776">DOI</a>
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- <section>
       <h2>Projects</h2>
-      <p>Selected research projects will be added here.</p>
+        <p>
+        Selected research projects will be added here.
+        </p>
     </section> -->
   </main>
 </body>
